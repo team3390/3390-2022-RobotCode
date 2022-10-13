@@ -1,4 +1,4 @@
-package frc.robot.commands.auto;
+package frc.robot.commands.autonomous;
 
 import java.util.List;
 
@@ -13,16 +13,17 @@ import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import edu.wpi.first.wpilibj2.command.RamseteCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.Constants;
 import frc.robot.subystems.Drivetrain;
 
 public class DefaultTrajectory extends SequentialCommandGroup {
 
-  private final SimpleMotorFeedforward motorFeed = new SimpleMotorFeedforward(0.15, 0.1);
-  private final PIDController PID = new PIDController(0.35, 0.005, 0);
-  private final RamseteController ramseteController = new RamseteController(2, 0.7);
+  private final SimpleMotorFeedforward motorFeed = new SimpleMotorFeedforward(Constants.AUTO_MOTOR_FEED_KS, Constants.AUTO_MOTOR_FEED_KV);
+  private final PIDController PID = new PIDController(Constants.AUTO_PID_KP, Constants.AUTO_PID_KI, Constants.AUTO_PID_KD);
+  private final RamseteController ramseteController = new RamseteController(Constants.AUTO_RAMSETE_CONFIG_B, Constants.AUTO_RAMSETE_CONFIG_ZETA);
 
   public DefaultTrajectory(Drivetrain drivetrain) {
-    TrajectoryConfig config = new TrajectoryConfig(0.5, 0.1).setKinematics(drivetrain.getKinematics());
+    TrajectoryConfig config = new TrajectoryConfig(Constants.AUTO_TRAJECTORY_MAX_VELMET, Constants.AUTO_TRAJECTORY_MAX_ACCMETSQ).setKinematics(drivetrain.getKinematics());
 
     Trajectory S_path = TrajectoryGenerator.generateTrajectory(
         // Start at the origin facing the +X direction
