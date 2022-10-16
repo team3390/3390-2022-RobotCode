@@ -10,7 +10,7 @@ public final class Constants {
     /**
      * Şasinin mekanik ve ölçümsel değerleri
      */
-    public static final double CHASIS_WHEEl_RADIUS_METERS = Units.inchesToMeters(6.0);
+    public static final double CHASIS_WHEEL_RADIUS_METERS = Units.inchesToMeters(6.0);
     public static final double CHASIS_METERS_BETWEEN_WHEELS = 0.295;
 
     /**
@@ -61,8 +61,8 @@ public final class Constants {
     public static final boolean DRIVE_RIGHT_ENCODER_INVERTED = true;
     public static final EncodingType DRIVE_LEFT_ENCODER_ENCODING_TYPE  = EncodingType.k2X;
     public static final EncodingType DRIVE_RIGHT_ENCODER_ENCODING_TYPE = EncodingType.k2X;
-    public static final double DRIVE_LEFT_ENCODER_DISTANCE_PER_PULSE  = 2 * Math.PI * CHASIS_WHEEl_RADIUS_METERS / 4096 * DRIVE_ENCODER_PULSE_COEFFICIENT;
-    public static final double DRIVE_RIGHT_ENCODER_DISTANCE_PER_PULSE = 2 * Math.PI * CHASIS_WHEEl_RADIUS_METERS / 4096 * DRIVE_ENCODER_PULSE_COEFFICIENT;
+    public static final double DRIVE_LEFT_ENCODER_DISTANCE_PER_PULSE  = 2 * Math.PI * CHASIS_WHEEL_RADIUS_METERS / 4096 * DRIVE_ENCODER_PULSE_COEFFICIENT;
+    public static final double DRIVE_RIGHT_ENCODER_DISTANCE_PER_PULSE = 2 * Math.PI * CHASIS_WHEEL_RADIUS_METERS / 4096 * DRIVE_ENCODER_PULSE_COEFFICIENT;
 
     /**
      * NavX Sensor
