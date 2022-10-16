@@ -45,6 +45,11 @@ public class Drivetrain extends SubsystemBase {
   private final DifferentialDriveOdometry odometry = new DifferentialDriveOdometry(getHeading());
 
   /**
+   * Limelight
+   */
+  public final LimelightSubsystem limelight = new LimelightSubsystem();
+
+  /**
    * Consturcter
    * 
    * Initialize fonksiyonu olarak düşünebilirsiniz.
@@ -199,6 +204,26 @@ public class Drivetrain extends SubsystemBase {
     leftLeader.setVoltage(-1 * leftVolts);
     rightLeader.setVoltage(rightVolts);
     drive.feed();
+  }
+
+  /**
+   * Limelight değerlerine göre hedefe şasi ile kitlenme
+   */
+  public void lockTarget() {
+    if (!limelight.atSetpoint()) {
+      double xSpeed = limelight.getXOutput();
+      double ySpeed = limelight.getYOutput();
+      
+      this.arcadeDrive(ySpeed, xSpeed);
+    }
+  }
+
+  /**
+   * Limelight hedef nokta da mı değil mi
+   * @return Hedef noktada olup oladığımız
+   */
+  public boolean isLimelightAtSetpoint() {
+    return limelight.atSetpoint();
   }
 
 }

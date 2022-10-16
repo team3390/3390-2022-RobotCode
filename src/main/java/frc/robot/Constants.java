@@ -27,6 +27,18 @@ public final class Constants {
     public static final double AUTO_TRAJECTORY_MAX_ACCMETSQ = 0.1;
 
     /**
+     * Limelight değerleri
+     */
+    public static final double LIMELIGHT_PID_KP        = 0.4;
+    public static final double LIMELIGHT_PID_KI        = 0.01;
+    public static final double LIMELIGHT_PID_KD        = 0;
+    public static final double LIMELIGHT_PID_TOLERANCE = 0;
+    public static final double LIMELIGHT_PID_MAX_OUT   = 0.7;
+    public static final double LIMELIGHT_PID_MIN_OUT   = -0.7;
+    public static enum LIMELIGHT_LIGHT_MODE { ON, OFF, BLINK }
+    public static enum LIMELIGHT_CAMERA_MODE { VISION, DRIVE }
+
+    /**
      * Sürüş motorları ID'lerinin tanımlanması
      */
     public static final int DRIVE_LEFT_LEADER_ID  = 15;
