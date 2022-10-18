@@ -16,6 +16,8 @@ import frc.robot.Constants;
 
 public class Drivetrain extends SubsystemBase {
 
+  public static Drivetrain INSTANCE = new Drivetrain();
+
   /**
    * Hızkontrol sürücülerinin tanımlanması
    */
@@ -47,7 +49,7 @@ public class Drivetrain extends SubsystemBase {
   /**
    * Limelight
    */
-  public final LimelightSubsystem limelight = new LimelightSubsystem();
+  public final LimelightSubsystem limelight = LimelightSubsystem.INSTANCE;
 
   /**
    * Consturcter
@@ -209,12 +211,24 @@ public class Drivetrain extends SubsystemBase {
   /**
    * Limelight değerlerine göre hedefe şasi ile kitlenme
    */
-  public void lockTarget() {
+  public void lockTarget(Constants.LIMELIGHT_LOCK_MODE mode) {
     if (!limelight.atSetpoint()) {
       double xSpeed = limelight.getXOutput();
       double ySpeed = limelight.getYOutput();
       
-      this.arcadeDrive(ySpeed, xSpeed);
+      switch (mode.ordinal()) {
+        case 0:
+          this.arcadeDrive(0, xSpeed);
+          break;
+        
+        case 1:
+          this.arcadeDrive(ySpeed, 0);
+          break;
+      
+        default:
+          this.arcadeDrive(ySpeed, xSpeed);
+          break;
+      }
     }
   }
 

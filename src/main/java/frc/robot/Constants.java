@@ -35,8 +35,10 @@ public final class Constants {
     public static final double LIMELIGHT_PID_TOLERANCE = 0;
     public static final double LIMELIGHT_PID_MAX_OUT   = 0.7;
     public static final double LIMELIGHT_PID_MIN_OUT   = -0.7;
-    public static enum LIMELIGHT_LIGHT_MODE { ON, OFF, BLINK }
+    public static final double LIMELIGHT_SHOOTER_COEFFICIENT = 12.759;
+    public static enum LIMELIGHT_LIGHT_MODE { PIPELINE_VALUE, OFF, BLINK, ON }
     public static enum LIMELIGHT_CAMERA_MODE { VISION, DRIVE }
+    public static enum LIMELIGHT_LOCK_MODE { X, Y, ALL }
 
     /**
      * Sürüş motorları ID'lerinin tanımlanması
@@ -83,6 +85,15 @@ public final class Constants {
     public static final int SHOOTER_FEED_DOWN_MOTOR1_ID = 19;
     public static final int SHOOTER_FEED_DOWN_MOTOR2_ID = 20;
     public static final int SHOOTER_FEED_DOWN_MOTOR3_ID = 3;
+    public static final double SHOOTER_SHOOT_PID_KP = 0.4;
+    public static final double SHOOTER_SHOOT_PID_KI = 0.01;
+    public static final double SHOOTER_SHOOT_PID_KD = 0;
+    public static final double SHOOTER_SHOOT_PID_TOLERANCE = 10;
+    public static final double SHOOTER_SHOOT_PID_MAXOUT = 0.4;
+    public static final double SHOOTER_SHOOT_PID_MINOUT = 0.05;
+    public static final double SHOOTER_FEED_TOP_SPEED   = 0.5;
+    public static final double SHOOTER_FEED_DOWN_SPEED  = 0.3;
+    public static final double SHOOTER_FEED_DOWN2_SPEED = 1;
 
     public static final class Pneumatics {
         public static final PneumaticsModuleType P_MODULE_TYPE = PneumaticsModuleType.CTREPCM;

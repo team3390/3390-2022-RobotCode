@@ -23,6 +23,8 @@ public class LimelightSubsystem extends SubsystemBase {
   private double lastTargetX;
   private double lastTargetY;
 
+  public static LimelightSubsystem INSTANCE = new LimelightSubsystem();
+
   public LimelightSubsystem() {
     networkTable = NetworkTableInstance.getDefault().getTable("limelight");
     tX = networkTable.getEntry("tx");
@@ -129,5 +131,14 @@ public class LimelightSubsystem extends SubsystemBase {
       return 0;
     }
     return yPID.output(yPID.calculate(this.lastTargetY, 0));
+  }
+
+  /**
+   * Hedefin kamerada kapladığı alana göre atıcı motorunun ne kadar
+   * dönmesi gerktiğini hesaplayan fonksiyon
+   * @return RPM
+   */
+  public int calculateShooterRPM() {
+    return (int) Math.round((100 - tA.getDouble(0)) * Constants.LIMELIGHT_SHOOTER_COEFFICIENT);
   }
 }
