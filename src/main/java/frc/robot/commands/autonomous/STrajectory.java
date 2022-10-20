@@ -16,13 +16,13 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants;
 import frc.robot.subystems.Drivetrain;
 
-public class StTrajectory extends SequentialCommandGroup {
+public class STrajectory extends SequentialCommandGroup {
 
   private final SimpleMotorFeedforward motorFeed = new SimpleMotorFeedforward(Constants.AUTO_MOTOR_FEED_KS, Constants.AUTO_MOTOR_FEED_KV);
   private final PIDController PID = new PIDController(Constants.AUTO_PID_KP, Constants.AUTO_PID_KI, Constants.AUTO_PID_KD);
   private final RamseteController ramseteController = new RamseteController(Constants.AUTO_RAMSETE_CONFIG_B, Constants.AUTO_RAMSETE_CONFIG_ZETA);
 
-  public StTrajectory(Drivetrain drivetrain) {
+  public STrajectory(Drivetrain drivetrain) {
     TrajectoryConfig config = new TrajectoryConfig(Constants.AUTO_TRAJECTORY_MAX_VELMET, Constants.AUTO_TRAJECTORY_MAX_ACCMETSQ).setKinematics(drivetrain.getKinematics());
 
     Trajectory S_path = TrajectoryGenerator.generateTrajectory(
