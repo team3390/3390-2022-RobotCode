@@ -19,7 +19,8 @@ public class BallSubsystem extends SubsystemBase {
   private final CANSparkMax feederDown2 = new CANSparkMax(Constants.SHOOTER_FEED_DOWN_MOTOR2_ID, MotorType.kBrushless);
   private final WPI_TalonSRX feederDown3 = new WPI_TalonSRX(Constants.SHOOTER_FEED_DOWN_MOTOR3_ID);
 
-  private final Solenoid intakeSolenoid = new Solenoid(Constants.PNEUMATICS_MODULE_TYPE, Constants.PNEUMATICS_INTAKE_PORT);
+  public final Solenoid intakeSolenoid = new Solenoid(Constants.PNEUMATICS_MODULE_TYPE, Constants.PNEUMATICS_INTAKE_PORT);
+  public final WPI_TalonSRX intakeMotor = new WPI_TalonSRX(Constants.INTAKE_MOTOR_ID);
 
   private final RelativeEncoder shooterEncoder = shooter1.getEncoder();
   private final RelativeEncoder topFeederEncoder = feederTop1.getEncoder();
