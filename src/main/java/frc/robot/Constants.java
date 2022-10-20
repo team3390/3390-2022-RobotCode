@@ -95,11 +95,11 @@ public final class Constants {
     public static final double SHOOTER_FEED_DOWN_SPEED  = 0.3;
     public static final double SHOOTER_FEED_DOWN2_SPEED = 1;
 
-    public static final class Pneumatics {
-        public static final PneumaticsModuleType P_MODULE_TYPE = PneumaticsModuleType.CTREPCM;
-
-        public static final int kVitesseSolenoidPort = 0;
-        public static final int kIntakeSolenoidPort = 1;
-    }
+    /**
+     * Pnömatik
+     */
+    public static final PneumaticsModuleType PNEUMATICS_MODULE_TYPE = PneumaticsModuleType.CTREPCM;
+    public static final int PNEUMATICS_VITESSE_PORT = 0;
+    public static final int PNEUMATICS_INTAKE_PORT  = 1;
 
 }

@@ -5,6 +5,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.utility.PID;
@@ -17,6 +18,8 @@ public class BallSubsystem extends SubsystemBase {
   private final CANSparkMax feederDown1 = new CANSparkMax(Constants.SHOOTER_FEED_DOWN_MOTOR1_ID, MotorType.kBrushless);
   private final CANSparkMax feederDown2 = new CANSparkMax(Constants.SHOOTER_FEED_DOWN_MOTOR2_ID, MotorType.kBrushless);
   private final WPI_TalonSRX feederDown3 = new WPI_TalonSRX(Constants.SHOOTER_FEED_DOWN_MOTOR3_ID);
+
+  private final Solenoid intakeSolenoid = new Solenoid(Constants.PNEUMATICS_MODULE_TYPE, Constants.PNEUMATICS_INTAKE_PORT);
 
   private final RelativeEncoder shooterEncoder = shooter1.getEncoder();
   private final RelativeEncoder topFeederEncoder = feederTop1.getEncoder();

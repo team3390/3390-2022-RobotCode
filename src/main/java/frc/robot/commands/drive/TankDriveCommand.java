@@ -19,7 +19,7 @@ public class TankDriveCommand extends CommandBase {
 
   @Override
   public void execute() {
-    drivetrain.tankDrivePercent(left, right);
+    drivetrain.tankDrivePercent((left / 3)* 2, (right / 3) * 2);
   }
 
   @Override
