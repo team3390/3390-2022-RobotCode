@@ -139,6 +139,8 @@ public class LimelightSubsystem extends SubsystemBase {
    * @return RPM
    */
   public int calculateShooterRPM() {
-    return (int) Math.round((100 - tA.getDouble(0)) * Constants.LIMELIGHT_SHOOTER_COEFFICIENT);
+    if (this.isTarget())
+      return (int) Math.round((100 - tA.getDouble(0)) * Constants.LIMELIGHT_SHOOTER_COEFFICIENT);
+    return 0;
   }
 }

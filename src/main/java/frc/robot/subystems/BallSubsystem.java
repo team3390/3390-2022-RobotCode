@@ -44,14 +44,15 @@ public class BallSubsystem extends SubsystemBase {
   public void periodic() {}
 
   public void shoot() {
+    double setpoint = limelight.calculateShooterRPM();
+    if (setpoint > 0)
+      speedPID.setSetpoint(setpoint);
     if (speedPID.getSetpoint() != null) {
-      if (!speedPID.atSetpoint()) {
-        double setpoint = limelight.calculateShooterRPM();
-        double output = speedPID.output(speedPID.calculate(shooterEncoder.getVelocity(), setpoint));
-  
-        shooter1.set(output);
-        shooter2.set(output);
-      } else {
+      double output = speedPID.output(speedPID.calculate(shooterEncoder.getVelocity(), setpoint));
+
+      shooter1.set(output);
+      shooter2.set(output);
+      if (speedPID.atSetpoint()) {
         this.startFeedingToTop();
       }
     } else {

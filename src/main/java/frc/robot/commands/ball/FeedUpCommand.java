@@ -3,26 +3,23 @@ package frc.robot.commands.ball;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subystems.BallSubsystem;
 
-public class ShootCommand extends CommandBase {
+public class FeedUpCommand extends CommandBase {
 
   private final BallSubsystem ballSubsystem;
 
-  public ShootCommand(BallSubsystem ballSubsystem) {
+  public FeedUpCommand(BallSubsystem ballSubsystem) {
     this.ballSubsystem = ballSubsystem;
     addRequirements(ballSubsystem);
   }
 
   @Override
-  public void initialize() {}
-
-  @Override
   public void execute() {
-    ballSubsystem.shoot();
+    ballSubsystem.startFeedingToTop();
   }
 
   @Override
   public void end(boolean interrupted) {
-    ballSubsystem.stopAll();
+    ballSubsystem.stopFeeding();
   }
 
   @Override

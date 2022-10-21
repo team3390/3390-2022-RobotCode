@@ -9,6 +9,7 @@ import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -35,6 +36,8 @@ public class Drivetrain extends SubsystemBase {
   private final Encoder rightEncoder = new Encoder(rightEncoderProts[0], rightEncoderProts[1], Constants.DRIVE_RIGHT_ENCODER_INVERTED, Constants.DRIVE_RIGHT_ENCODER_ENCODING_TYPE);
 
   private final AHRS navX = new AHRS(Constants.NAVX_SENSOR_PORT);
+
+  public final Solenoid vitesse = new Solenoid(Constants.PNEUMATICS_MODULE_TYPE, Constants.PNEUMATICS_VITESSE_PORT);
 
   /**
    * Robot objeleri oluşturuyoruz.

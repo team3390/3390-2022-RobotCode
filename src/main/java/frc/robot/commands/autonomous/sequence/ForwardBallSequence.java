@@ -7,9 +7,9 @@ import frc.robot.commands.ball.IntakeCommand;
 import frc.robot.subystems.BallSubsystem;
 import frc.robot.subystems.Drivetrain;
 
-public class TestSequence extends SequentialCommandGroup {
+public class ForwardBallSequence extends SequentialCommandGroup {
 
-  public TestSequence(Drivetrain drivetrain, BallSubsystem ballSubsystem) {
+  public ForwardBallSequence(Drivetrain drivetrain, BallSubsystem ballSubsystem) {
     addCommands(
       new ParallelDeadlineGroup(
         new ForwardTrajectory(drivetrain),
