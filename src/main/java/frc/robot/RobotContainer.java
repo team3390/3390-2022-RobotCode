@@ -8,6 +8,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.autonomous.sequence.TestSequence;
+import frc.robot.commands.ball.IntakeCommand;
+import frc.robot.commands.ball.ShootCommand;
 import frc.robot.commands.drive.LockTargetCommand;
 import frc.robot.commands.drive.TankDriveCommand;
 import frc.robot.subystems.BallSubsystem;
@@ -30,10 +33,12 @@ public class RobotContainer {
 
     public RobotContainer() {
         // Ana komutun TankDriveCommand olarak belirlenmesi
-        drivetrain.setDefaultCommand(new TankDriveCommand(drivetrain, leftStick.getY(), rightStick.getY()));
+        drivetrain.setDefaultCommand(new TankDriveCommand(drivetrain, leftStick, rightStick));
 
         // Joystick butonlarına işlev atamaları yapılması
         new JoystickButton(atari, 4).whenHeld(new LockTargetCommand(drivetrain));
+        new JoystickButton(leftStick, 1).whenHeld(new ShootCommand(ballSubsystem));
+        new JoystickButton(rightStick, 1).whenHeld(new IntakeCommand(ballSubsystem));
     }
   
     /**
@@ -43,6 +48,6 @@ public class RobotContainer {
      * @return Robot sürücüleri tarafından seçilen otonom kodu.
      */
     public Command getAutonomousCommand() {
-        return null;
+        return new TestSequence(drivetrain, ballSubsystem);
     }
 }

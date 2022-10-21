@@ -16,15 +16,15 @@ public final class Constants {
     /**
      * Otonom ve rota izleme değerleri
      */
-    public static final double AUTO_MOTOR_FEED_KS = 0.15;
-    public static final double AUTO_MOTOR_FEED_KV = 0.1;
+    public static final double AUTO_MOTOR_FEED_KS = 2.5;
+    public static final double AUTO_MOTOR_FEED_KV = 1;
     public static final double AUTO_PID_KP = 0.35;
-    public static final double AUTO_PID_KI = 0.005;
+    public static final double AUTO_PID_KI = 0;
     public static final double AUTO_PID_KD = 0;
     public static final double AUTO_RAMSETE_CONFIG_B    = 2;
     public static final double AUTO_RAMSETE_CONFIG_ZETA = 0.7;
     public static final double AUTO_TRAJECTORY_MAX_VELMET = 0.5;
-    public static final double AUTO_TRAJECTORY_MAX_ACCMETSQ = 0.1;
+    public static final double AUTO_TRAJECTORY_MAX_ACCMETSQ = 0.25;
 
     /**
      * Limelight değerleri

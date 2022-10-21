@@ -50,6 +50,14 @@ public class PID {
     }
 
     /**
+     * PID objesinin hedefini döndürür
+     * @return hedef
+     */
+    public Double getSetpoint() {
+        return PID.getSetpoint();
+    }
+
+    /**
      * PID'nin hesaplayacağı hedef değeri belirler
      * @param setpoint hedef değer
      */

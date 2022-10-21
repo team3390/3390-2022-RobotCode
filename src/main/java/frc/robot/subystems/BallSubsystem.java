@@ -23,9 +23,6 @@ public class BallSubsystem extends SubsystemBase {
   public final WPI_TalonSRX intakeMotor = new WPI_TalonSRX(Constants.INTAKE_MOTOR_ID);
 
   private final RelativeEncoder shooterEncoder = shooter1.getEncoder();
-  private final RelativeEncoder topFeederEncoder = feederTop1.getEncoder();
-  private final RelativeEncoder downFeeder1Encoder = feederDown1.getEncoder();
-  private final RelativeEncoder downFeeder2Encoder = feederDown2.getEncoder();
 
   private final PID speedPID;
   private final LimelightSubsystem limelight = LimelightSubsystem.INSTANCE;
@@ -47,15 +44,25 @@ public class BallSubsystem extends SubsystemBase {
   public void periodic() {}
 
   public void shoot() {
-    if (!speedPID.atSetpoint()) {
-      double setpoint = limelight.calculateShooterRPM();
-      double output = speedPID.output(speedPID.calculate(shooterEncoder.getVelocity(), setpoint));
-
-      shooter1.set(output);
-      shooter2.set(output);
+    if (speedPID.getSetpoint() != null) {
+      if (!speedPID.atSetpoint()) {
+        double setpoint = limelight.calculateShooterRPM();
+        double output = speedPID.output(speedPID.calculate(shooterEncoder.getVelocity(), setpoint));
+  
+        shooter1.set(output);
+        shooter2.set(output);
+      } else {
+        this.startFeedingToTop();
+      }
     } else {
+      this.startShooter();
       this.startFeedingToTop();
     }
+  }
+
+  public void startShooter() {
+    shooter1.set(0.3);
+    shooter2.set(0.3);
   }
 
   public void startFeedingToTop() {

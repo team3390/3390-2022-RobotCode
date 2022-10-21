@@ -20,12 +20,12 @@ public class IntakeCommand extends CommandBase {
 
   @Override
   public void execute() {
-    ballSubsystem.intakeMotor.set(1);
+    ballSubsystem.intakeMotor.set(-1);
   }
 
   @Override
   public void end(boolean interrupted) {
-    ballSubsystem.intakeSolenoid.set(false);
+    // ballSubsystem.intakeSolenoid.set(false);
     ballSubsystem.intakeMotor.stopMotor();
   }
 

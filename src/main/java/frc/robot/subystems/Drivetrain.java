@@ -16,8 +16,6 @@ import frc.robot.Constants;
 
 public class Drivetrain extends SubsystemBase {
 
-  public static Drivetrain INSTANCE = new Drivetrain();
-
   /**
    * Hızkontrol sürücülerinin tanımlanması
    */
@@ -203,8 +201,8 @@ public class Drivetrain extends SubsystemBase {
    */
   public void tankDriveVolts(double leftVolts, double rightVolts) {
     drive.setSafetyEnabled(false);
-    leftLeader.setVoltage(-1 * leftVolts);
-    rightLeader.setVoltage(rightVolts);
+    leftLeader.setVoltage(-leftVolts);
+    rightLeader.setVoltage(-rightVolts);
     drive.feed();
   }
 

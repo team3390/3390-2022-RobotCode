@@ -1,5 +1,6 @@
 package frc.robot.commands.drive;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subystems.Drivetrain;
 
@@ -7,10 +8,10 @@ public class TankDriveCommand extends CommandBase {
 
   private final Drivetrain drivetrain;
 
-  private final double left;
-  private final double right;
+  private final Joystick left;
+  private final Joystick right;
 
-  public TankDriveCommand(Drivetrain drivetrain, double left, double right) {
+  public TankDriveCommand(Drivetrain drivetrain, Joystick left, Joystick right) {
     this.drivetrain = drivetrain;
     this.left = left;
     this.right = right;
@@ -18,8 +19,13 @@ public class TankDriveCommand extends CommandBase {
   }
 
   @Override
+  public void initialize() {
+    System.out.println("Tink Driv");
+  }
+
+  @Override
   public void execute() {
-    drivetrain.tankDrivePercent((left / 3)* 2, (right / 3) * 2);
+    drivetrain.tankDrivePercent(left.getY(), right.getY());
   }
 
   @Override
